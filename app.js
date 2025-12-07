@@ -51,7 +51,7 @@ app.get("/health",(req,res) =>{
     sendSuccessResponse(res,200,"ok",{})
 });
 
-app.use("/api/v1",router);
+app.use("/api",router);
 
 
 

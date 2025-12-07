@@ -5,7 +5,6 @@ import {
   sendErrorResponse,
   sendSuccessResponse,
 } from "../../utils/response.js";
-import { registerValidation } from "../../schema/user.schema.js";
 
 export const registerUser = async (req, res) => {
   try {
@@ -14,20 +13,8 @@ export const registerUser = async (req, res) => {
       params: req.params,
       body: req.body,
     });
-    const { error, value } = registerValidation.validate(req.body, {
-      abortEarly: false,
-      stripUnknown: true,
-    });
-    if (error) {
-      return sendErrorResponse(
-        res,
-        HTTP_STATUS_CODES.BAD_REQUEST,
-        "Validation Error",
-        error.details.map((d) => d.message)
-      );
-    }
 
-    let { firstName, lastName, email, password } = value;
+    let { firstName, lastName, email, password } = req.body;
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {

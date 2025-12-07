@@ -31,6 +31,8 @@ services:
       - JWT_SECRET=jwttopsecret
       - MONGO_URL=mongodb://mongo:27017/tmtc
       - REDIS_URL=redis://redis:6379
+      - SHARE_SECRET=shareToken
+      - HOST=http://localhost:3000
     depends_on:
       - mongo      
     volumes:

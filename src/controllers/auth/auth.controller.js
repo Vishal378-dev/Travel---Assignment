@@ -13,21 +13,7 @@ export const loginUser = async (req, res) => {
       body: req.body,
     });
 
-    const { error, value } = loginValidation.validate(req.body, {
-      abortEarly: false,
-      stripUnknown: true,
-    });
-
-    if (error) {
-      return sendErrorResponse(
-        res,
-        HTTP_STATUS_CODES.BAD_REQUEST,
-        "Validation Error",
-        error.details.map((d) => d.message)
-      );
-    }
-
-    const { email, password } = value;
+    const { email, password } = req.body;
     const user = await User.findOne({ email }).select("+password");
     if (!user) {
       return sendErrorResponse(
