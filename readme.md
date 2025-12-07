@@ -13,6 +13,13 @@ run this command-
 
 docker-compose up -d --build
 
+#############################
+After Successfull build 
+run this command -
+docker ps 
+
+make sure there should be 3 containers up and running
+
 How to Access Api 
 follow this api docs link - 
 https://documenter.getpostman.com/view/27088469/2sB3dPTqqh
