@@ -106,3 +106,10 @@ Open a PR with clear description and tests for non-trivial changes. Maintain cod
 
 ---
 If you'd like, I can also add quick start scripts, a `.env.example`, or update `app.js` to make the rate-limit `limit` option explicit (the project currently uses `max: 10`).
+
+
+## API Documentation
+
+Postman Collection can be found at - 
+
+https://documenter.getpostman.com/view/27088469/2sB3dPTqqh
