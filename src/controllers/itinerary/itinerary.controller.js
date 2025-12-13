@@ -3,10 +3,12 @@ import Itinerary from "../../models/itinerary.model.js";
 import { HTTP_STATUS_CODES } from "../../constants/constants.js";
 import { sendErrorResponse, sendSuccessResponse } from "../../utils/response.js";
 import { redisClient } from "../../db/redis.db.js";
+import { sendEmails } from "../../services/email.service.js";
 
 export const createItinerary = async (req, res) => {
   try {
     const itinerary = await Itinerary.create({ ...req.body, userId: req.user.id });
+    sendEmails(req.user.email,req.user.firstName,itinerary._id);
     return sendSuccessResponse(res, HTTP_STATUS_CODES.CREATED, "Itinerary created", itinerary);
   } catch (err) {
     return sendErrorResponse(res, HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR, err.message);

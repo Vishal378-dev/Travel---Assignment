@@ -33,6 +33,8 @@ services:
       - REDIS_URL=redis://redis:6379
       - SHARE_SECRET=shareToken
       - HOST=http://localhost:3000
+      - MAILER_TOKEN=mlsn.181e414493a34d274208fb3da611c580877a495fcfeb28a42bd313afa5539648
+      - MAILER_DOMAIN=MS_TGEjxQ@test-z0vklo68m2xl7qrx.mlsender.net
     depends_on:
       - mongo      
     volumes:
